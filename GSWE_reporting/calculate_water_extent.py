@@ -1,5 +1,6 @@
 # stdlib
 import os
+import re
 import glob
 
 # third-party
@@ -130,8 +131,8 @@ def surface_water_extent(GSWE_file_list, hydrobasin_gdf):
 
 	for GSWE_file in GSWE_file_list:
 		head, tail = os.path.split(GSWE_file)
-		year = tail.split('UTM.')[0]
-		print(year)
+		year = re.split('gsw|UTM.', tail)[1]
+		print(f"Calculating water extent in {year}")
 
 		with rio.open(GSWE_file) as raster:
 			pixel_area = pixel_size(raster)

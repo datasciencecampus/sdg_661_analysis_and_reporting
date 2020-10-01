@@ -1,0 +1,4 @@
+*.tif
+*.DS_Store
+*.cpython-38.pyc
+.ipynb_checkpoints/*

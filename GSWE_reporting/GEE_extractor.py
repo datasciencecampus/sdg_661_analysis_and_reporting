@@ -34,7 +34,7 @@ def extract_baseline_to_drive(data_asset, geometry, drive_folder, mask):
     task_config = {
     'region': geometry.coordinates().getInfo(), 
     'scale': 30,
-    'description': 'gswebaseline',
+    'description': 'gswbaseline',
     'folder': drive_folder,
     'maxPixels':3932959350
     } 
