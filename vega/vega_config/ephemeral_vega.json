@@ -1,0 +1,110 @@
+{
+  "config": {
+    "view": {
+      "width": 400,
+      "continuousHeight": 600
+    },
+    "legend": {
+      "gradientVerticalMaxLength": 600
+    }
+  },
+  "data": {
+    "url": "https://github.com/datasciencecampus/sdg_661_analysis_and_reporting/master/vega/UK_hydroBASINS.geojson",
+    "format": {
+      "property": "features"
+    }
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.4
+  },
+  "encoding": {
+    "color": {
+      "condition": {
+        "type": "quantitative",
+        "field": "Spatial Extent (km²)",
+        "scale": {
+          "scheme": "lighttealblue",
+          "domain": [
+            0,
+            40
+          ]
+        },
+        "test": "datum.Extent > -1"
+      },
+      "value": "#dbe9f6"
+    },
+    "tooltip": [
+      {
+        "field": "properties.HYBAS_ID",
+        "type": "nominal",
+        "title": "HydroBASIN ID"
+      },
+      {
+        "field": "Extent",
+        "type": "nominal",
+        "title": "Ephemeral Extent (km²)"
+      }
+    ]
+  },
+  "height": 800,
+  "selection": {
+    "GSW": {
+      "type": "single",
+      "fields": [
+        "Year"
+      ],
+      "bind": {
+        "Year": {
+          "input": "range",
+          "max": 2019,
+          "min": 1984,
+          "step": 1,
+          "name": "Year"
+        }
+      },
+      "init": {
+        "Year": 1984
+      }
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.HYBAS_ID",
+      "from": {
+        "data": {
+          "url": "https://github.com/datasciencecampus/sdg_661_analysis_and_reporting/master/vega/data/ephemeral.json"
+        },
+        "key": "HYBAS_ID",
+        "fields": ["1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019"]
+      }
+    },
+    {
+      "fold": ["1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019"],
+      "as": [
+        "Year",
+        "Extent"
+      ]
+    },
+    {
+      "calculate": "parseInt(datum.Year)",
+      "as": "Year"
+    },
+    {
+      "calculate": "datum.Extent",
+      "as": "Spatial Extent (km²)"
+    },
+    {
+      "calculate": "datum.Water",
+      "as": "Water"
+    },
+    {
+      "filter": {
+        "selection": "GSW"
+      }
+    }
+  ],
+  "width": 700,
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json"
+}
