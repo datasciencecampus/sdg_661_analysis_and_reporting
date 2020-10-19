@@ -25,11 +25,7 @@
         "type": "quantitative",
         "field": "Spatial Extent (km²)",
         "scale": {
-          "scheme": "lighttealblue",
-          "domain": [
-            0,
-            40
-          ]
+          "scheme": "lighttealblue"
         },
         "test": "datum.Extent > -1"
       },
@@ -44,7 +40,7 @@
       {
         "field": "Extent",
         "type": "nominal",
-        "title": "Ephemeral Extent (km²)"
+        "title": "% of land area (Ephemeral)"
       }
     ]
   },
