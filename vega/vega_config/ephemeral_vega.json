@@ -23,9 +23,13 @@
     "color": {
       "condition": {
         "type": "quantitative",
-        "field": "Spatial Extent (km²)",
+        "field": "Extent (% of land)",
         "scale": {
-          "scheme": "lighttealblue"
+          "scheme": "lighttealblue",
+          "domain": [
+            0,
+            1
+          ]
         },
         "test": "datum.Extent > -1"
       },
@@ -40,6 +44,7 @@
       {
         "field": "Extent",
         "type": "nominal",
+        "format": ".3f",
         "title": "% of land area (Ephemeral)"
       }
     ]
@@ -89,7 +94,7 @@
     },
     {
       "calculate": "datum.Extent",
-      "as": "Spatial Extent (km²)"
+      "as": "Extent (% of land)"
     },
     {
       "calculate": "datum.Water",
