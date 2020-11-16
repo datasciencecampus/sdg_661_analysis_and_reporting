@@ -13,6 +13,8 @@ GSWE measures changes in the distribution of inland open water e.g., lakes and r
 
 GSWE is globaly and publicaly availabe, and can be extracted via the [Google Earth Engine](https://earthengine.google.com/)
 
+GSWE data for the UK has already been extracted and can be accessed [here](https://drive.google.com/drive/folders/1fhexANrrCfBaz6sNEGUvcaDmGApfPkEI?usp=sharing)
+
 ## Extracting GSWE
 Code has been developed to extract GSWE data to Google Drive using the `GSWE_reporting` package. 
 
@@ -44,7 +46,7 @@ reproject_GSWE(gsw_files, '+proj=utm +zone=30 +ellps=WGS84 +datum=WGS84 +units=m
 
 ## Preparing the boundary file
 Water extent is aggregated to hydroBASINs (a series of polygon layers that depict watershed boundaries). They can be downloaded the HydroSHEDS page [here](https://hydrosheds.org/page/hydrobasins).
-This is then clipped to a national boundary to ensure coastal waters are not included in reporting of inland waters.
+This is then clipped to a [national boundary](https://geoportal.statistics.gov.uk/datasets/countries-december-2019-boundaries-uk-bfc) to ensure coastal waters are not included in reporting of inland waters.
 
 ```
 from GSWE_reporting import clip_basin_to_boundary
