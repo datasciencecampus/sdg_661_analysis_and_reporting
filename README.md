@@ -13,6 +13,8 @@ GSWE measures changes in the distribution of inland open water e.g., lakes and r
 
 GSWE is globaly and publicaly availabe, and can be extracted via the [Google Earth Engine](https://earthengine.google.com/)
 
+GSWE data for the UK has already been extracted and can be accessed [here](https://drive.google.com/drive/folders/1fhexANrrCfBaz6sNEGUvcaDmGApfPkEI?usp=sharing)
+
 ## Extracting GSWE
 Code has been developed to extract GSWE data to Google Drive using the `GSWE_reporting` package. 
 
@@ -44,7 +46,7 @@ reproject_GSWE(gsw_files, '+proj=utm +zone=30 +ellps=WGS84 +datum=WGS84 +units=m
 
 ## Preparing the boundary file
 Water extent is aggregated to hydroBASINs (a series of polygon layers that depict watershed boundaries). They can be downloaded the HydroSHEDS page [here](https://hydrosheds.org/page/hydrobasins).
-This is then clipped to a national boundary to ensure coastal waters are not included in reporting of inland waters.
+This is then clipped to a [national boundary](https://geoportal.statistics.gov.uk/datasets/countries-december-2019-boundaries-uk-bfc) to ensure coastal waters are not included in reporting of inland waters.
 
 ```
 from GSWE_reporting import clip_basin_to_boundary
@@ -63,4 +65,32 @@ hydro_basin = gpd.read_file('./boundaries/boundary.shp')
 water_extent = surface_water_extent(gsw_file_path_list, hydro_basin)
 ```
 
+## UK Results
+The results for the UK can be found in `water_type_w_total.csv` and `water_extent_change.csv`. 
 
+### Water Extent
+`water_type_w_total.csv` contains the spatial extent for each of the water types that can be derived from the Global Surface Water Explorer data (Permanent, Seasonal, and Ephemeral), aggregated to HydroBASINs from 1984 to 2019. It also contains the spatial extent expressed as a proportion of the HydroBASIN's area.
+
+ Columns |  |
+| :---: | :---: |
+| HYBAS_ID | Unique HydroBASIN ID |
+| area | Area of the  HydroBASIN (km<sup>2</sup>) |
+| Year | Year of GSWE data |
+| Ephemeral | Spatial extent of ephemeral water (km<sup>2</sup>) |
+| Seasonal | Spatial extent of seasonal water (km<sup>2</sup>) |
+| Permanent | Spatial extent of permanent water (km<sup>2</sup>) |
+| % Ephemeral | Proportion of HydroBASIN area that is ephemeral water|
+| % Seasonal | Proportion of HydroBASIN area that is seasonal water |
+| % Permanent | Proportion of HydroBASIN area that is permanent water|
+
+
+### Water Extent Change
+As described by the [indicators metadata](https://unstats.un.org/sdgs/metadata/files/Metadata-06-06-01a.pdf), is calculated as:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Percentage&space;Change&space;in&space;Spatial&space;Extent&space;=&space;\frac{\left&space;(\beta&space;-\gamma&space;\right&space;)}{\beta&space;}\times&space;100" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Percentage&space;Change&space;in&space;Spatial&space;Extent&space;=&space;\frac{\left&space;(\beta&space;-\gamma&space;\right&space;)}{\beta&space;}\times&space;100" title="Percentage Change in Spatial Extent = \frac{\left (\beta -\gamma \right )}{\beta }\times 100" /></a>
+
+where:  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\beta&space;=" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\beta" title="\beta" /></a> = the average national extent from 2001-2005  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\beta&space;=" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\gamma" title="\gamma" /></a> = the average national extent of any other 5-year period
+
+The results for the UK can be found in `water_extent_change.csv` and describes the spatial extent change from the baseline to 2010-14 and 2015-2019.
