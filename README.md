@@ -87,7 +87,7 @@ The results for the UK can be found in `water_type_w_total.csv` and `water_exten
 ### Water Extent Change
 As described by the [indicators metadata](https://unstats.un.org/sdgs/metadata/files/Metadata-06-06-01a.pdf), is calculated as:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Percentage&space;Change&space;in&space;Spatial&space;Extent&space;=&space;\frac{\left&space;(\beta&space;-\gamma&space;\right&space;)}{\beta&space;}\times&space;100" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Percentage&space;Change&space;in&space;Spatial&space;Extent&space;=&space;\frac{\left&space;(\beta&space;-\gamma&space;\right&space;)}{\beta&space;}\times&space;100" title="Percentage Change in Spatial Extent = \frac{\left (\beta -\gamma \right )}{\beta }\times 100" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=Percentage&space;Change&space;in&space;Spatial&space;Extent&space;=&space;\frac{\left&space;(\beta&space;-\gamma&space;\right&space;)}{\beta&space;}\times&space;100" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Percentage&space;Change&space;in&space;Spatial&space;Extent&space;=&space;\frac{\left&space;(\gamma&space;-\beta&space;\right&space;)}{\beta&space;}\times&space;100" title="Percentage Change in Spatial Extent = \frac{\left (\gamma -\beta \right )}{\beta }\times 100" /></a>
 
 where:  
 <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\beta&space;=" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\beta" title="\beta" /></a> = the average national extent from 2001-2005  
