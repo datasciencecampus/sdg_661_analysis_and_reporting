@@ -1,13 +1,19 @@
 #third party
 import ee
 
+# Set constants for Asset IDs
+# Currently versions 1.3 are active and others deprecated.
+# May change in future!
+GSWE_MONTHLY = "JRC/GSW1_3/MonthlyHistory"
+GSWE_YEARLY = "JRC/GSW1_3/YearlyHistory"
+
 def baseline_image_mask():
     """Creates a reduced sum image of monthly observations during baseline years (2001-2005)
     
     Returns:
         ee.Image: Number of observations a pixel had over the baseline period
     """
-    baseline_months_collection = ee.ImageCollection('JRC/GSW1_1/MonthlyHistory').filterDate('2001-01', '2006-01')
+    baseline_months_collection = ee.ImageCollection(GSWE_MONTHLY).filterDate('2001-01', '2006-01')
     baseline_months_sum = baseline_months_collection.reduce(ee.Reducer.sum())
     baselines_sum_img = ee.Image(baseline_months_sum)
     
