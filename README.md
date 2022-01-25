@@ -1,4 +1,4 @@
-# sdg_661_analysis_and_reporting
+# SDG 6.6.1 Analysis and Reporting
 
 The Sustainable Development Goals (SDGs) have been developed by the United Nations as a “blueprint to achieve a better and more sustainable future for all”; designed to end poverty, 
 halt climate change and reduce inequalities. The SDGs are made up of 17 goals and 244 indicators, making the mandate placed on all National Statistics Institutes to report on the 
@@ -10,11 +10,11 @@ ecosystems that provide an important service to society, including open waters (
 ## Data
 
 ---
-**NOTE**
+:warning: **NOTE**
 
 The Global Surface Water Explorer data has been updated with a new version on
 Google Earth Engine. At the time of creation [Version 1.2](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_2_YearlyHistory)
-was used. However, this is no superceded by [Version 1.3](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_3_YearlyHistory).
+was used. However, this is now superceded by [Version 1.3](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_3_YearlyHistory).
 
 ---
 
@@ -48,7 +48,7 @@ extract_gswe("JRC/GSW1_3/YearlyHistory", geometry, 1984, 2020, 'GSWE_exports')
 ## Reprojecting GSWE
 The GSWE is exported into WGS84 and when calculating water extent should be reprojected into a projected coordinate system
 
-```
+```python
 from GSWE_reporting import get_gswe_paths, reproject_GSWE
 
 gswe_files = get_gswe_paths('./GSW_output/', '.tif')
