@@ -59,7 +59,7 @@ reproject_GSWE(gsw_files, '+proj=utm +zone=30 +ellps=WGS84 +datum=WGS84 +units=m
 Water extent is aggregated to hydroBASINs (a series of polygon layers that depict watershed boundaries). They can be downloaded the HydroSHEDS page [here](https://hydrosheds.org/page/hydrobasins).
 This is then clipped to a [national boundary](https://geoportal.statistics.gov.uk/datasets/countries-december-2019-boundaries-uk-bfc) to ensure coastal waters are not included in reporting of inland waters.
 
-```
+```python
 from GSWE_reporting import clip_basin_to_boundary
 hydrobasin_clipped = clip_basin_to_boundary(hydrobasin, boundary, target_crs)
 ```
@@ -68,7 +68,7 @@ hydrobasin_clipped = clip_basin_to_boundary(hydrobasin, boundary, target_crs)
 ## Calculating Water Extent
 With both the boundary and GSWE data processed, inland water extent can be calculated:
 
-```
+```python
 from GSWE_reporting import surface_water_extent
 
 gsw_file_path_list = get_gswe_paths('./Reprojected/', 'UTM.tif')
