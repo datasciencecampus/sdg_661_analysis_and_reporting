@@ -8,6 +8,16 @@ This open-source tool looks to report on one of the 244 SDG indicators, 6.6.1:: 
 ecosystems that provide an important service to society, including open waters (rivers and estuaries, lakes and reservoirs), wetlands (peatland and reedbeds), and groundwater aquifers.  
 
 ## Data
+
+---
+**NOTE**
+
+The Global Surface Water Explorer data has been updated with a new version on
+Google Earth Engine. At the time of creation [Version 1.2](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_2_YearlyHistory)
+was used. However, this is no superceded by [Version 1.3](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_3_YearlyHistory).
+
+---
+
 Here we use the Global Surface Water Explorer (GSWE) dataset developed by UN Environment Programme (UNEP), the European Commission Joint Research Council, and Google. GSWE is based on satellite imagery from the past 35 years. Currently 
 GSWE measures changes in the distribution of inland open water e.g., lakes and reservoirs, a sub-indicator of 6.6.1.
 
