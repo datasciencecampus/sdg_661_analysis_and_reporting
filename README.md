@@ -28,7 +28,7 @@ GSWE data for the UK has already been extracted and can be accessed [here](https
 ## Extracting GSWE
 Code has been developed to extract GSWE data to Google Drive using the `GSWE_reporting` package. 
 
-```
+```python
 import ee
 from GSWE_reporting import extract_gswe
 
@@ -40,8 +40,9 @@ geometry = ee.Geometry.Polygon(
           [-12.598544729822379, 49.00174346741333],
           [3.749111520177621, 49.00174346741333],
           [3.749111520177621, 61.78863494939058]]]) ## UK bounding box
-          
-extract_gswe('JRC/GSW1_2/YearlyHistory', geometry, 1984, 2020, 'GSWE_exports')
+         
+# NOTE: Now using version 1.3 of the GSWE data
+extract_gswe("JRC/GSW1_3/YearlyHistory", geometry, 1984, 2020, 'GSWE_exports')
 ```
 
 ## Reprojecting GSWE
