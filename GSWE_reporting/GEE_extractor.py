@@ -3,7 +3,11 @@ import ee
 
 # Set constants for Asset IDs
 # Currently versions 1.3 are active and others deprecated.
-# May change in future!
+# The Asset IDs originally used by the project
+GSWE_MONTHLY_ORIGINAL = "JRC/GSW1_1/MonthlyHistory"  # only up to 2019-01-01
+GSWE_YEARLY_ORIGINAL = "JRC/GSW1_2/YearlyHistory"  # only up to 2020-01-01
+
+# Current Asset IDs - may need to change in future!
 GSWE_MONTHLY = "JRC/GSW1_3/MonthlyHistory"
 GSWE_YEARLY = "JRC/GSW1_3/YearlyHistory"
 
@@ -13,7 +17,10 @@ def baseline_image_mask():
     Returns:
         ee.Image: Number of observations a pixel had over the baseline period
     """
-    baseline_months_collection = ee.ImageCollection(GSWE_MONTHLY).filterDate('2001-01', '2006-01')
+    #baseline_months_collection = ee.ImageCollection(GSWE_MONTHLY).filterDate('2001-01', '2006-01')
+    baseline_months_collection = ee.ImageCollection(GSWE_MONTHLY) \
+        .filterMetadata('year', 'greater_than', 2000) \
+        .filterMetadata('year', 'less_than', 2006)
     baseline_months_sum = baseline_months_collection.reduce(ee.Reducer.sum())
     baselines_sum_img = ee.Image(baseline_months_sum)
     
@@ -32,7 +39,10 @@ def extract_baseline_to_drive(data_asset, geometry, drive_folder, mask):
     Returns:
         GeoTIFF: Baseline image
     """
-    baseline_years = ee.ImageCollection(data_asset).filterDate(str(2001), str(2006))
+    # baseline_years = ee.ImageCollection(data_asset).filterDate(str(2001), str(2006))
+    baseline_years = ee.ImageCollection(data_asset)\
+        .filterMetadata('year', 'greater_than', 2000) \
+        .filterMetadata('year', 'less_than', 2006)
     baseline_mode = baseline_years.reduce(ee.Reducer.mode())
     
     img_masked = baseline_mode.updateMask(mask.gte(1)) ## Update layer using baseline mask - 0 = no observations    
@@ -56,10 +66,13 @@ def extract_gswe_to_drive(data_asset, geometry, start, end, drive_folder, mask):
         geometry (ee.Geometry.Polygon): Bounding box of area of interest
         start (int): start year
         end (int): end year
-        Googke Drive folder for exports
+        drive_folder (str): Google Drive folder for exports
         mask (ee.Image): Reduced image of monthly observations
     """
-    gsw = ee.ImageCollection(data_asset).filterDate(str(start), str(end))
+    gsw = ee.ImageCollection(data_asset) \
+        .filterMetadata('year', 'greater_than', start - 1) \
+        .filterMetadata('year', 'less_than', end)
+
     img_count = gsw.size().getInfo()
     collectionList = gsw.toList(img_count)
     collectionSize = collectionList.size().getInfo()
