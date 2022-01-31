@@ -107,7 +107,3 @@ def extract_gswe(data_asset, geometry, start, end, drive_folder):
     extract_gswe_to_drive(data_asset, geometry, start, end, drive_folder, mask)
     
     return print(f'GSWE files are being extracted to {drive_folder} in your Google Drive')
-
-if __name__ == '__main__':
-    print(__file__)
-    print(GSWE_MONTHLY)
