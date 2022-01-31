@@ -9,13 +9,16 @@ ecosystems that provide an important service to society, including open waters (
 
 ## Data
 
----
-:warning: **NOTE**
 
-The Global Surface Water Explorer data has been updated with a new version on
-Google Earth Engine. At the time of creation [Version 1.2](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_2_YearlyHistory)
-was used. However, this is now superceded by [Version 1.3](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_3_YearlyHistory).
----
+> :warning: January 2022
+> 
+>At the time of creation versions [1.1](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_1_MonthlyHistory) of the Monthly History and [1.2](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_2_YearlyHistory) of the Yearly history were used.
+The GSWE data are updated from time to time with version 1.3 of both datasets being the
+most current: [Mothly History v1.3](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_3_MonthlyHistory), [Yearly History v1.3](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_3_YearlyHistory). 
+>
+> To accomodate any future changes the file `gswe_versions.cfg` can be updated
+> with the corresponding asset IDs / URLs.
+
 
 Here we use the Global Surface Water Explorer (GSWE) dataset developed by UN Environment Programme (UNEP), the European Commission Joint Research Council, and Google. GSWE is based on satellite imagery from the past 35 years. Currently 
 GSWE measures changes in the distribution of inland open water e.g., lakes and reservoirs, a sub-indicator of 6.6.1.

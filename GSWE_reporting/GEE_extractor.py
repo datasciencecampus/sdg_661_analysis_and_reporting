@@ -1,15 +1,13 @@
-#third party
+from configparser import ConfigParser
+
+# third party
 import ee
 
-# Set constants for Asset IDs
-# Currently versions 1.3 are active and others deprecated.
-# The Asset IDs originally used by the project
-GSWE_MONTHLY_ORIGINAL = "JRC/GSW1_1/MonthlyHistory"  # only up to 2019-01-01
-GSWE_YEARLY_ORIGINAL = "JRC/GSW1_2/YearlyHistory"  # only up to 2020-01-01
+# Parse asset IDs
+conf = ConfigParser()
+conf.read('../gswe_versions.cfg')
+GSWE_MONTHLY = conf.get('GSWE', 'MonthlyAssetID')
 
-# Current Asset IDs - may need to change in future!
-GSWE_MONTHLY = "JRC/GSW1_3/MonthlyHistory"
-GSWE_YEARLY = "JRC/GSW1_3/YearlyHistory"
 
 def baseline_image_mask():
     """Creates a reduced sum image of monthly observations during baseline years (2001-2005)
