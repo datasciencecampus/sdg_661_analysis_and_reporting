@@ -1,11 +1,14 @@
 from configparser import ConfigParser
+import os
 
 # third party
 import ee
 
 # Parse asset IDs
 conf = ConfigParser()
-conf.read('../gswe_versions.cfg')
+conf_path = os.path.join(os.path.abspath(os.path.dirname(__file__ + '/../../')),
+                         'gswe_versions.cfg')
+conf.read(conf_path)
 GSWE_MONTHLY = conf.get('GSWE', 'MonthlyAssetID')
 
 
@@ -104,3 +107,7 @@ def extract_gswe(data_asset, geometry, start, end, drive_folder):
     extract_gswe_to_drive(data_asset, geometry, start, end, drive_folder, mask)
     
     return print(f'GSWE files are being extracted to {drive_folder} in your Google Drive')
+
+if __name__ == '__main__':
+    print(__file__)
+    print(GSWE_MONTHLY)
