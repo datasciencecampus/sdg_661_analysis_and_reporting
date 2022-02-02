@@ -40,7 +40,8 @@ You may need to refresh using the `Refresh` button next to `Mount Drive`.
        repo_dir_name = 'sdg_661_analysis_and_reporting'
        ```
    5. Import the custom funtions from `GSWE_Reporting`
-   6. Authenticate and initialise Google Earth Engine
+   6. Parse and display the versions of GWSE data that will be used in the analysis.
+   7. Authenticate and initialise Google Earth Engine
 3. Examine the contents of the cell under User Settings. Ensure you are happy with
 the settings, particularly that the date range covers your intended time frame. Run the cell
 when you are happy.
@@ -52,19 +53,32 @@ Run the cells in this section to process and download the imagery for your speci
 time frame. Note that the cell will finish executing but the imagery will not be available for some time.
 You should check the link provided to track the progress.
 
-**Note:** Do not run any code within the **Preparing GSWE outputs** section until you are satisifed that the GSWE imagery has successfully finished downloading.
+A new directory will have been created at the root of your Drive using the
+naming convention `gswe_exports_YYYYmmddHHMMSS`. Imagery will be
+added to this directory as they are processed.
 
 ## Preparing HydroBASIN boundary
 These cells step through the processing required to clip and reproject the hydrobasins data.
 
-**Note:** These cells can be run while you are waiting for the imagery to process.
+> **NOTE**
+> 
+> These cells can be run while you are waiting for the imagery to process.
 
 ## Preparing GSWE outputs
-Only proceed with the next steps if you are satisifed that the GSWE imagery has successfully finished downloading.
+The first cell can be executed while the images are in the process of being
+exported. It will report the number of images found and confirm
+the path of the export folder.
 
-All the remaining cells in this section and below can now be executed. To exectute them all you can
-select `Runtime -> Run after` from the menu bar. This will sequentially run the remaining cells
-and generate the output files. Scroll down the notebook and ensure that cells have executed successfully - they will have a green tick to the left of them.
+>**WARNING**
+>
+>Only proceed with the next steps if you are satisifed that the GSWE imagery has successfully finished downloading.
+
+All the remaining cells in this section and below can now be executed. To execute them you can
+select `Runtime -> Run after` from the menu bar. Note that this will run all cells after
+the currently select cell - so make sure you select the cell imediately above the first cell you want executed before selecting `Run after`.
+
+The remaining cells will be executed sequentially run and generate the output files.
+Scroll down the notebook and ensure that cells have executed successfully - they will have a green tick to the left of them.
 
 Alternatively, users are encouraged to step through the remaining cells to get familiar with the process
 and to quickly identify any issues.
