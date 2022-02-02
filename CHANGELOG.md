@@ -1,7 +1,7 @@
 # Change Log
 
-## REF
-2022-01-26
+## 2.0.0
+2022-02-02
 - Updated [UK_Reporting](./UK_reporting.ipynb) notebook to provide a walkthrough.
 - Added a [user guide](./Colab_Guide.md) for running the UK reporting workflow on Google Colab.
 - Updated data sources to latest versions.
